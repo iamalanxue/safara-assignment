@@ -48,20 +48,6 @@ app.get('/ReceiveMessage/:queueName', (req, res) => {
   }
 });
 
-// app.get('/DeleteMessage/:queueName/:messageID', (req, res) => {
-//   try{
-//     const { queueName, messageID } = req.params;
-//     if(!(queueName in q) || q[queueName].peekHeadID() !== parseInt(messageID)) {
-//       throw new Error("Can't find queue given name or wrong message ID");
-//     }
-//     const message = q[queueName].dequeue();
-//     res.status(200).send(`<h1>${message}</h1>`);
-//   } catch(error) {
-//     console.log(error.message);
-//     res.status(500).send(error.message);
-//   }
-// });
-
 app.get('/DeleteMessage/:queueName/:messageID', (req, res) => {
   try{
     const { queueName, messageID } = req.params;
@@ -76,8 +62,6 @@ app.get('/DeleteMessage/:queueName/:messageID', (req, res) => {
   }
 });
 
-//should have redirects 
-//should have a condition where if you want to create a Queue with the same queueName then you error
 //404 page 
 app.use((req, res) => {
   res.status(404).sendFile('./pages/404.html', { root: __dirname });
